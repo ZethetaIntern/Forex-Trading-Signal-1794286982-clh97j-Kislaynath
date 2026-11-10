@@ -1,0 +1,5 @@
+Case Study,Period,Market Regime,Key Signal Issue,Required Adaptation,Quantified Impact
+USD/JPY Carry Trade Unwind,July–August 2024,Carry unwind / regime shift,Slow detection of regime change,Volatility + momentum + central-bank indicators,$2.8M loss; ~9.3% drawdown
+GBP Flash Crash,October 2016,Flash crash / thin liquidity,Unable to handle extreme velocity,Liquidity + session awareness + slippage controls,~6% GBP/USD move in ~2 minutes
+USD/INR Range Trade,2023–2024,Range-bound,False breakout signals,Automatic mean-reversion regime switch,USD/INR ~82.50–83.50 range
+EUR/CHF Floor Removal,January 2015,Black swan / policy shock,Signal prediction cannot reliably handle policy shock,Independent risk limits + position sizing,~30% EUR/CHF move

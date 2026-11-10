@@ -1,0 +1,92 @@
+﻿EVALUATE
+ROW(
+    "Total Signals",
+        COUNTROWS(PowerBI_Signal_Dim),
+
+    "BUY Signals",
+        CALCULATE(
+            COUNTROWS(PowerBI_Signal_Dim),
+            PowerBI_Signal_Dim[Composite_Signal] = "BUY"
+        ),
+
+    "SELL Signals",
+        CALCULATE(
+            COUNTROWS(PowerBI_Signal_Dim),
+            PowerBI_Signal_Dim[Composite_Signal] = "SELL"
+        ),
+
+    "HOLD Signals",
+        CALCULATE(
+            COUNTROWS(PowerBI_Signal_Dim),
+            PowerBI_Signal_Dim[Composite_Signal] = "HOLD"
+        )
+)
+
+EVALUATE
+FILTER(
+    SELECTCOLUMNS(
+        PowerBI_Risk_Fact,
+        "Metric", PowerBI_Risk_Fact[Metric],
+        "Value", PowerBI_Risk_Fact[Value]
+    ),
+    CONTAINSSTRING([Metric], "VaR")
+    
+    
+)
+ORDER BY [Metric]
+
+SELECT
+    [Name],
+    [TableID]
+FROM $SYSTEM.TMSCHEMA_MEASURES
+ORDER BY [Name]
+
+EVALUATE
+ROW(
+    "Total Signals", [Total Signals],
+    "Average Daily Return", [Average Daily Return],
+    "Sharpe Ratio", [Sharpe Ratio],
+    "Historical VaR 95%", [Historical VaR 95%],
+    "Historical VaR 99%", [Historical VaR 99%]
+)
+
+EVALUATE
+ROW(
+    "Total Signals", [Total Signals],
+    "BUY Signals", [BUY Signals],
+    "SELL Signals", [SELL Signals],
+    "HOLD Signals", [HOLD Signals],
+    "Average Close", [Average Close],
+    "Average Spread", [Average Spread]
+)
+
+EVALUATE
+ROW(
+    "Total ML Predictions", [Total ML Predictions],
+    "Correct Predictions", [Correct Predictions],
+    "False Positives", [False Positives],
+    "False Negatives", [False Negatives],
+    "True Positives", [True Positives],
+    "True Negatives", [True Negatives]
+)
+
+EVALUATE
+ROW(
+    "Historical VaR 95%", [Historical VaR 95%],
+    "Historical VaR 99%", [Historical VaR 99%],
+    "Sharpe Ratio", [Sharpe Ratio],
+    "Average Daily Return", [Average Daily Return]
+)
+
+EVALUATE
+ROW(
+    "Total Signals", [Total Signals],
+    "BUY Signals", [BUY Signals],
+    "SELL Signals", [SELL Signals],
+    "HOLD Signals", [HOLD Signals],
+    "Total ML Predictions", [Total ML Predictions],
+    "Total RL Observations", [Total RL Observations],
+    "Historical VaR 95%", [Historical VaR 95%],
+    "Historical VaR 99%", [Historical VaR 99%],
+    "Sharpe Ratio", [Sharpe Ratio]
+)
